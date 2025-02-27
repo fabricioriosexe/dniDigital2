@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_dialog">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dialogHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgIcono"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/imgIcono_done"
+            android:src="@drawable/icons8_dni_100"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/dialogVerificarDniTitulo"
+            android:textColor="#333"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgIcono"
+            app:layout_constraintStart_toEndOf="@id/imgIcono"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutConsulta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialogHeader">
+
+        <EditText
+            android:id="@+id/editDni"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:textColorHint="#8C8B8B"
+            android:background="@drawable/bg_txtdni"
+            android:hint="@string/editDni"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:padding="10dp"
+            tools:ignore="LabelFor" />
+
+        <ImageButton
+            android:id="@+id/btnConsultar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/btn_buscar_bg"
+            android:contentDescription="@string/btnConsultar_cd"
+            android:foreground="@drawable/btn_buscar_bg_selected"
+            android:padding="10dp"
+            android:src="@drawable/ic_search_24"
+            android:tint="#FFF" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

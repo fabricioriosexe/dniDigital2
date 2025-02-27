@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Verificador Cobertura Médica</string>
+    <string name="app_version">1.2.0</string>
+    <string name="btnOk">OK</string>
+    <string name="titular_vigente">Titular Vigente</string>
+    <string name="titular_vigencia">Vigente hasta el 28/02/2021</string>
+    <string name="imgIcono_done">Icono de OK</string>
+    <string name="imgIcono_close">Icono de Error</string>
+    <string name="titular_inexistente">DNI Inexistente</string>
+    <string name="titular_inactivo">DNI Inactivo</string>
+    <string name="tvContacto">Para más información contactarse con el administrador.</string>
+    <string name="imgLogo_cd">Logo de AMI</string>
+    <string name="tvTitulo">Verificador Cobertura Médica Tabacaleros de Misiones</string>
+    <string name="txtConsultarDni">Verificar con DNI</string>
+    <string name="btnConsultar_cd">botón Buscar</string>
+    <string name="editDni">DNI</string>
+    <string name="txtCarnetDigital">Verificar con Carnet Digital</string>
+    <string name="txtDni">Verificar con DNI</string>
+    <string name="dialogVerificarDniTitulo">Verificar con DNI</string>
+    <string name="dialogVerificarCarnetTitulo">Verificar con Carnet Digital</string>
+    <string name="carnet_digital_contacto">El Carnet Digital solo está disponible para Obras Sociales Adheridas. Para más información entre a: <a href="https://www.amimovil.com/">https://www.amimovil.com/</a></string>
+    <string name="txtSinObraSocial">Sin\nObra Social</string>
+</resources>
