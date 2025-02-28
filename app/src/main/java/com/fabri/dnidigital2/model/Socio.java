@@ -11,6 +11,8 @@ public class Socio implements Serializable {
     private boolean activo;
     private Gremio gremio;
     private Date fechaVigenciaGremial;
+    private String clave;
+
 
     public Socio(int id, String dni, String apellidoNombre, Estado estado, boolean activo, Gremio gremio, Date fechaVigenciaGremial) {
         this.id = id;
@@ -48,5 +50,13 @@ public class Socio implements Serializable {
 
     public Date getFechaVigenciaGremial() {
         return fechaVigenciaGremial;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 }

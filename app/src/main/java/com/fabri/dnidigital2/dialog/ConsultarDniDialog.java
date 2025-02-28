@@ -61,7 +61,7 @@ public class ConsultarDniDialog extends AlertDialog {
             clicked = true; // Se marca como clickeado para evitar múltiples solicitudes
 
             // Se consulta el socio en el repositorio pasando el DNI ingresado
-            SocioRepository.getInstance().getSocio(editDni.getText().toString()).observe(activity, socio -> {
+            SocioRepository.getInstance().getSocio(activity, editDni.getText().toString()).observe(activity, socio -> {
                 if (socio == null) {
                     // Si no se encuentra el socio, se muestra un diálogo de DNI inexistente
                     new DniInexistenteDialog(activity).show(DniInexistenteDialog.Tipo.INEXISTENTE);

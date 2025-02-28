@@ -2,13 +2,17 @@
 package com.fabri.dnidigital2.repository;
 
 // Importamos las clases necesarias para LiveData y MutableLiveData
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 // Importamos el modelo de datos Socio
+import com.fabri.dnidigital2.database.DatabaseHelper;
 import com.fabri.dnidigital2.model.Socio;
 
 // Importamos la interfaz que define el servicio web para Socio
+import com.fabri.dnidigital2.util.PasswordGenerator;
 import com.fabri.dnidigital2.ws.SocioWS;
 import com.fabri.dnidigital2.ws.WebServiceManager;
 
@@ -39,28 +43,37 @@ public class SocioRepository {
     }
 
     // Metodo para obtener un Socio desde la API usando LiveData
-    public LiveData<Socio> getSocio(String dni) {
-        MutableLiveData<Socio> data = new MutableLiveData<>(); // Objeto LiveData mutable para almacenar la respuesta
+    public LiveData<Socio> getSocio(Context context, String dni) {
+        MutableLiveData<Socio> data = new MutableLiveData<>();
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
 
-        // Llamada a la API para obtener los datos del socio con el DNI
         ws.getSocio(dni).enqueue(new Callback<Socio>() {
             @Override
             public void onResponse(Call<Socio> call, Response<Socio> response) {
-                // Si la respuesta es exitosa y contiene datos, se actualiza el LiveData
                 if (response.isSuccessful() && response.body() != null) {
-                    data.setValue(response.body());
+                    Socio socio = response.body();
+
+                    // Generar clave aleatoria
+                    String clave = PasswordGenerator.generarClave();
+                    socio.setClave(clave);
+
+                    // Guardar en SQLite
+                    dbHelper.insertarSocio(socio);
+
+                    // Enviar datos al LiveData
+                    data.setValue(socio);
                 } else {
-                    data.setValue(null); // Si la respuesta es errónea o vacía, se asigna null
+                    data.setValue(null);
                 }
             }
 
             @Override
             public void onFailure(Call<Socio> call, Throwable t) {
-                // Si la llamada falla, se asigna null al LiveData
                 data.setValue(null);
             }
         });
 
-        return data; // Retorna el LiveData con el resultado de la petición
+        return data;
     }
+
 }
