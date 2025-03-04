@@ -1,6 +1,7 @@
 package com.fabri.dnidigital2.dialog;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.fabri.dnidigital2.util.FechaConverter;
 import com.fabri.dnidigital2.model.Socio;
 import com.fabri.dnidigital2.R;
+import com.fabri.dnidigital2.util.QRGenerator;
 
 // Clase para mostrar información de un socio con DNI activo
 public class DniActivoDialog extends AlertDialog {
@@ -25,7 +27,7 @@ public class DniActivoDialog extends AlertDialog {
         this.activity = activity;
     }
 
-    // Método para mostrar el diálogo con los datos del socio
+    // Metodo para mostrar el diálogo con los datos del socio
     public void show(Socio socio) {
         ViewGroup viewGroup = activity.findViewById(android.R.id.content);
         View root = LayoutInflater.from(activity).inflate(R.layout.dialog_dni_activo, viewGroup, false);
@@ -58,6 +60,14 @@ public class DniActivoDialog extends AlertDialog {
         tvApellidoNombre.setText(socio.getApellidoNombre());
         tvGremio.setText(socio.getGremio().getAbr());
         tvEstado.setText(socio.getEstado().getDsc());
+
+
+        // Generar y mostrar el código QR
+        ImageView imgQrCode = root.findViewById(R.id.imgQrCode);
+        Bitmap qrCode = QRGenerator.generateQRCode(socio.getDni(), 400, 400);
+        if (qrCode != null) {
+            imgQrCode.setImageBitmap(qrCode);
+        }
 
         // Mostrar el diálogo
         alertDialog.show();
